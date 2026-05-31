@@ -1,0 +1,1130 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Højfynsspartel | Professionel spartling &amp; maling på Fyn</title>
+  <meta name="description" content="Højfynsspartel v/ Michael Iversen. Uddannet bygningsmaler siden 2009. Vi leverer håndværk i særklasse – fuldspartling, filt, maling og facader på hele Fyn.">
+  <meta name="theme-color" content="#14532d">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+
+  <!-- Tailwind CSS via CDN (v4 browser) -->
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  
+  <style>
+    /* Custom premium styles */
+    :root {
+      --emerald: #14532d;
+      --emerald-light: #166534;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      * { animation: none !important; transition: none !important; }
+    }
+
+    /* Typography refinements */
+    h1, h2, h3 {
+      font-feature-settings: "tnum", "ss01";
+    }
+
+    /* Premium card hover */
+    .project-card {
+      transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1), 
+                  box-shadow 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+    .project-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.15);
+    }
+    .project-card img {
+      transition: transform 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+    .project-card:hover img {
+      transform: scale(1.05);
+    }
+
+    /* Fade up on scroll */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.7s cubic-bezier(0.23, 1, 0.32, 1),
+                  transform 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Elegant buttons */
+    .btn-primary {
+      transition: all 0.2s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 10px 15px -3px rgb(20 83 45 / 0.25);
+    }
+
+    /* Nav active state */
+    .nav-link {
+      position: relative;
+      transition: color 0.2s ease;
+    }
+    .nav-link:after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -2px;
+      left: 0;
+      background-color: #14532d;
+      transition: width 0.25s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+    .nav-link:hover:after,
+    .nav-link.active:after {
+      width: 100%;
+    }
+    .nav-link.active {
+      color: #14532d;
+      font-weight: 600;
+    }
+
+    /* Mobile menu */
+    .mobile-menu {
+      transition: transform 0.35s cubic-bezier(0.32, 0.72, 0, 1),
+                  opacity 0.2s ease;
+    }
+
+    /* Form inputs */
+    .form-input {
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+    .form-input:focus {
+      border-color: #14532d;
+      box-shadow: 0 0 0 4px rgba(20, 83, 45, 0.08);
+      outline: none;
+    }
+
+    /* Lightbox */
+    .lightbox {
+      animation: fadeIn 0.2s ease forwards;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    /* Before/After slider */
+    .ba-container {
+      position: relative;
+      overflow: hidden;
+      border-radius: 16px;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+      touch-action: pan-y;
+    }
+    .ba-after {
+      position: absolute;
+      top: 0; left: 0; bottom: 0;
+      overflow: hidden;
+    }
+    .ba-handle {
+      position: absolute;
+      top: 0; bottom: 0;
+      width: 3px;
+      background: white;
+      box-shadow: 0 0 0 1px rgba(0,0,0,0.1);
+      pointer-events: none;
+      z-index: 10;
+    }
+    .ba-handle-circle {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 44px;
+      height: 44px;
+      background: white;
+      border-radius: 9999px;
+      box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 11;
+    }
+
+    /* Filter buttons */
+    .filter-btn {
+      transition: all 0.2s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+    .filter-btn.active {
+      background-color: #14532d;
+      color: white;
+      border-color: #14532d;
+    }
+
+    /* Process steps */
+    .process-step {
+      transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+    .process-step:hover {
+      transform: translateY(-4px);
+    }
+
+    /* Subtle premium details */
+    .section-header {
+      letter-spacing: -0.025em;
+    }
+
+    /* Floating CTA on mobile */
+    .fab {
+      box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.2), 0 4px 6px -4px rgb(0 0 0 / 0.2);
+      transition: transform 0.2s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+    .fab:active {
+      transform: scale(0.95);
+    }
+
+    /* Accessibility */
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+  </style>
+</head>
+<body class="bg-white text-slate-900 antialiased font-sans">
+  <!-- NAVBAR -->
+  <nav class="sticky top-0 z-50 bg-white/95 backdrop-blur-xl border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="flex h-20 items-center justify-between">
+        <!-- Logo -->
+        <a href="#" class="flex items-center gap-3 group">
+          <div class="h-9 w-9 rounded-2xl bg-emerald-900 flex items-center justify-center text-white font-bold text-2xl tracking-[-1.5px] group-hover:bg-emerald-800 transition-colors">H</div>
+          <div>
+            <div class="font-semibold text-2xl tracking-[-0.5px] text-slate-900">Højfynsspartel</div>
+            <div class="text-[10px] text-slate-500 -mt-1.5">Vissenbjerg • Fyn</div>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation -->
+        <div class="hidden md:flex items-center gap-9 text-sm font-medium">
+          <a href="#om-os" class="nav-link text-slate-700 hover:text-slate-900">Om os</a>
+          <a href="#projekter" class="nav-link text-slate-700 hover:text-slate-900">Projekter</a>
+          <a href="#proces" class="nav-link text-slate-700 hover:text-slate-900">Sådan arbejder vi</a>
+          <a href="#ydelser" class="nav-link text-slate-700 hover:text-slate-900">Ydelser</a>
+        </div>
+
+        <!-- Desktop CTA -->
+        <div class="hidden md:flex items-center gap-4">
+          <a href="tel:21631793" 
+             class="flex items-center gap-2 text-sm font-medium text-slate-700 hover:text-emerald-800 transition-colors">
+            <span>21 63 17 93</span>
+          </a>
+          <a href="#kontakt" 
+             class="btn-primary inline-flex items-center justify-center px-6 py-2.5 rounded-2xl bg-emerald-900 text-white text-sm font-semibold hover:bg-emerald-800 active:scale-[0.985]">
+            Få et tilbud
+          </a>
+        </div>
+
+        <!-- Mobile menu button -->
+        <button id="mobile-menu-btn"
+                class="md:hidden flex h-11 w-11 items-center justify-center rounded-2xl border border-slate-200 text-slate-700 active:bg-slate-100 transition"
+                aria-label="Åbn menu" aria-expanded="false">
+          <svg id="menu-icon" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+          <svg id="close-icon" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="mobile-menu hidden md:hidden border-t border-slate-200 bg-white">
+      <div class="px-6 py-8 flex flex-col gap-1 text-lg">
+        <a href="#om-os" class="mobile-link block py-3.5 text-slate-800 font-medium border-b border-slate-100">Om os</a>
+        <a href="#projekter" class="mobile-link block py-3.5 text-slate-800 font-medium border-b border-slate-100">Projekter</a>
+        <a href="#proces" class="mobile-link block py-3.5 text-slate-800 font-medium border-b border-slate-100">Sådan arbejder vi</a>
+        <a href="#ydelser" class="mobile-link block py-3.5 text-slate-800 font-medium border-b border-slate-100">Ydelser</a>
+        
+        <div class="pt-6 flex flex-col gap-3">
+          <a href="tel:21631793" 
+             class="flex justify-center items-center gap-2 py-3.5 rounded-2xl border border-slate-200 text-slate-700 font-medium active:bg-slate-50">
+            Ring 21 63 17 93
+          </a>
+          <a href="#kontakt" 
+             class="flex justify-center items-center py-3.5 rounded-2xl bg-emerald-900 text-white font-semibold active:bg-emerald-800">
+            Få et uforpligtende tilbud
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="relative min-h-[92vh] flex items-center justify-center bg-slate-950 text-white overflow-hidden">
+    <div class="absolute inset-0">
+      <img src="images/hero.jpg" 
+           alt="Smukt fuldspartlet og malet rum med naturligt lys" 
+           class="absolute inset-0 w-full h-full object-cover opacity-80">
+      <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/80"></div>
+    </div>
+
+    <div class="relative z-10 max-w-5xl mx-auto px-6 pt-16 pb-24 text-center">
+      <div class="inline-flex items-center gap-2 rounded-full bg-white/10 px-5 py-1 text-xs tracking-[3px] font-medium text-white/75 mb-6">
+        VISSENBJERG • FYN • SIDEN 2020
+      </div>
+
+      <h1 class="text-6xl sm:text-7xl md:text-[82px] leading-[0.9] font-semibold tracking-[-4.5px] mb-6">
+        Håndværk,<br>der holder.<br>
+        <span class="text-white/85">Finish der ses.</span>
+      </h1>
+
+      <p class="max-w-xl mx-auto text-xl text-white/75 mb-10">
+        Præcision. Ærlighed. Resultater i topklasse.<br class="hidden sm:block">
+        Uddannet bygningsmaler med 15+ års erfaring.
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="#kontakt" 
+           class="btn-primary inline-flex items-center justify-center gap-3 px-10 h-14 rounded-2xl bg-white text-emerald-950 text-[15px] font-semibold tracking-[-0.2px] hover:bg-white/95 active:scale-[0.985]">
+          Få et uforpligtende tilbud
+        </a>
+        <a href="#projekter" 
+           class="inline-flex items-center justify-center gap-3 px-9 h-14 rounded-2xl border border-white/30 hover:bg-white/10 text-white text-[15px] font-medium transition">
+          Se vores arbejde
+        </a>
+      </div>
+
+      <div class="mt-16 flex items-center justify-center gap-8 text-xs tracking-[2px] text-white/50">
+        <div>MICHAEL IVERSEN</div>
+        <div class="h-px w-8 bg-white/30"></div>
+        <div>BYGNINGSMALER SIDEN 2009</div>
+      </div>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="absolute bottom-9 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center text-white/40 text-xs tracking-[2px]">
+      <div>SCROLL</div>
+      <div class="text-xl leading-none mt-0.5">↓</div>
+    </div>
+  </header>
+
+  <!-- OM OS -->
+  <section id="om-os" class="scroll-mt-24 bg-white">
+    <div class="max-w-5xl mx-auto px-6 py-20 md:py-28">
+      <div class="grid md:grid-cols-12 gap-x-12 gap-y-12 items-center">
+        <div class="md:col-span-7">
+          <div class="uppercase tracking-[3px] text-xs text-emerald-800 font-semibold mb-4">OM HØJFYNS-SPARTEL</div>
+          <h2 class="text-6xl md:text-7xl leading-none tracking-[-2.8px] font-semibold text-balance">
+            Kvalitet er<br>ikke noget,<br>vi går på kompromis med.
+          </h2>
+        </div>
+
+        <div class="md:col-span-5 text-[17px] leading-relaxed text-slate-600 space-y-6">
+          <p>
+            Jeg hedder <span class="font-semibold text-slate-800">Michael Iversen</span>. Jeg er uddannet bygningsmaler siden 2009 og har arbejdet med spartling, maling og overfladebehandling i mere end 15 år.
+          </p>
+          <p>
+            I 2020 startede jeg Højfynsspartel i Vissenbjerg. Siden da har vi hjulpet hundredvis af kunder på Fyn — og ofte også på Sjælland og i Jylland — med at få smukke, holdbare vægge og lofter.
+          </p>
+          <p class="text-slate-500">
+            Vi tror på, at det gode resultat starter med grundig forberedelse og ærlighed omkring, hvad der skal til.
+          </p>
+        </div>
+      </div>
+
+      <!-- Trust stats -->
+      <div class="mt-20 pt-10 border-t grid grid-cols-2 md:grid-cols-4 gap-y-8 text-center">
+        <div>
+          <div class="text-5xl font-semibold tracking-tighter text-slate-900">15+</div>
+          <div class="text-sm text-slate-500 mt-1.5">Års erfaring</div>
+        </div>
+        <div>
+          <div class="text-5xl font-semibold tracking-tighter text-slate-900">2020</div>
+          <div class="text-sm text-slate-500 mt-1.5">Grundlagt</div>
+        </div>
+        <div>
+          <div class="text-5xl font-semibold tracking-tighter text-slate-900">Hele Fyn</div>
+          <div class="text-sm text-slate-500 mt-1.5">+ Sjælland &amp; Jylland</div>
+        </div>
+        <div>
+          <div class="text-5xl font-semibold tracking-tighter text-slate-900">100%</div>
+          <div class="text-sm text-slate-500 mt-1.5">Fokus på finish</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- UDVALGTE PROJEKTER + FILTER -->
+  <section id="projekter" class="scroll-mt-20 bg-slate-50 border-t border-slate-100">
+    <div class="max-w-7xl mx-auto px-6 py-20 md:py-24">
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10">
+        <div>
+          <div class="uppercase tracking-[3px] text-xs font-semibold text-emerald-800 mb-3">UDVALGTE ARBEJDER</div>
+          <h2 class="text-6xl tracking-[-2.4px] font-semibold">Projekter vi er stolte af</h2>
+        </div>
+        <p class="max-w-md text-lg text-slate-600">
+          Et udvalg af de opgaver, vi har løst de seneste år. Kvalitet og ærlighed er vores varemærke.
+        </p>
+      </div>
+
+      <!-- Filters -->
+      <div class="flex flex-wrap gap-2 mb-8" id="filters">
+        <button data-filter="all" class="filter-btn active px-5 py-2 text-sm font-medium rounded-2xl border border-slate-200 bg-white hover:bg-slate-100">Alle</button>
+        <button data-filter="Fuldspartling" class="filter-btn px-5 py-2 text-sm font-medium rounded-2xl border border-slate-200 bg-white hover:bg-slate-100">Fuldspartling</button>
+        <button data-filter="Filt & Tapet" class="filter-btn px-5 py-2 text-sm font-medium rounded-2xl border border-slate-200 bg-white hover:bg-slate-100">Filt &amp; Tapet</button>
+        <button data-filter="Facader" class="filter-btn px-5 py-2 text-sm font-medium rounded-2xl border border-slate-200 bg-white hover:bg-slate-100">Facader</button>
+        <button data-filter="Maling" class="filter-btn px-5 py-2 text-sm font-medium rounded-2xl border border-slate-200 bg-white hover:bg-slate-100">Maling</button>
+      </div>
+
+      <!-- Portfolio Grid -->
+      <div id="portfolio-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Populated by JavaScript -->
+      </div>
+
+      <div class="mt-12 text-center">
+        <p class="text-slate-600 mb-5">Vil du se flere eksempler eller høre om en lignende opgave?</p>
+        <a href="#kontakt" class="inline-flex px-8 py-3.5 text-sm font-semibold rounded-2xl border border-slate-300 hover:bg-white hover:border-slate-400 transition">Kontakt os om dit projekt</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SÅDAN ARBEJDER VI (NEW - high value addition) -->
+  <section id="proces" class="scroll-mt-24 bg-white">
+    <div class="max-w-6xl mx-auto px-6 py-20 md:py-24">
+      <div class="max-w-2xl mb-14">
+        <div class="uppercase tracking-[3px] text-xs font-semibold text-emerald-800 mb-3">VORES TILGANG</div>
+        <h2 class="text-6xl tracking-[-2.2px] font-semibold">Sådan arbejder vi</h2>
+        <p class="mt-4 text-xl text-slate-600">Vi går systematisk til værks – for det bedste og mest holdbare resultat.</p>
+      </div>
+
+      <div class="grid md:grid-cols-4 gap-6">
+        <div class="process-step bg-white border border-slate-200 rounded-3xl p-8">
+          <div class="w-10 h-10 rounded-2xl bg-emerald-100 text-emerald-900 flex items-center justify-center text-xl font-semibold mb-6">1</div>
+          <h3 class="font-semibold text-2xl tracking-tight mb-3">Gennemgang</h3>
+          <p class="text-slate-600 leading-relaxed">Vi besigtiger opgaven sammen med dig og gennemgår ønsker, materialer og forventninger.</p>
+        </div>
+        <div class="process-step bg-white border border-slate-200 rounded-3xl p-8">
+          <div class="w-10 h-10 rounded-2xl bg-emerald-100 text-emerald-900 flex items-center justify-center text-xl font-semibold mb-6">2</div>
+          <h3 class="font-semibold text-2xl tracking-tight mb-3">Forberedelse</h3>
+          <p class="text-slate-600 leading-relaxed">Grundig afdækning, reparation af underlaget og sikring af de bedste betingelser for resultatet.</p>
+        </div>
+        <div class="process-step bg-white border border-slate-200 rounded-3xl p-8">
+          <div class="w-10 h-10 rounded-2xl bg-emerald-100 text-emerald-900 flex items-center justify-center text-xl font-semibold mb-6">3</div>
+          <h3 class="font-semibold text-2xl tracking-tight mb-3">Udførelse</h3>
+          <p class="text-slate-600 leading-relaxed">Præcist og metodisk arbejde med de rette materialer og teknikker – altid med fokus på finish.</p>
+        </div>
+        <div class="process-step bg-white border border-slate-200 rounded-3xl p-8">
+          <div class="w-10 h-10 rounded-2xl bg-emerald-100 text-emerald-900 flex items-center justify-center text-xl font-semibold mb-6">4</div>
+          <h3 class="font-semibold text-2xl tracking-tight mb-3">Aflevering</h3>
+          <p class="text-slate-600 leading-relaxed">Gennemgang, oprydning og sikring af at du er 100% tilfreds – før vi forlader opgaven.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FØR & EFTER -->
+  <section class="bg-slate-50 border-t border-slate-100">
+    <div class="max-w-5xl mx-auto px-6 py-20 md:py-24">
+      <div class="text-center mb-12">
+        <div class="uppercase tracking-[3px] text-xs font-semibold text-emerald-800 mb-3">SE FORSKELLEN</div>
+        <h2 class="text-6xl tracking-[-2.2px] font-semibold">Før og efter</h2>
+        <p class="mt-3 text-lg text-slate-600 max-w-md mx-auto">Træk i skyderen for at se, hvordan vi forvandler overflader.</p>
+      </div>
+
+      <!-- Before/After Slider -->
+      <div class="max-w-[980px] mx-auto">
+        <div id="ba-slider" class="ba-container relative aspect-[16/10] bg-slate-200 cursor-ew-resize select-none">
+          <!-- After image (base) -->
+          <img src="images/before-after/after.jpg" alt="Efter - smukt fuldspartlet og malet værelse" class="block w-full h-full object-cover" draggable="false">
+          
+          <!-- Before image (clipped) -->
+          <div id="ba-before" class="ba-after inset-0" style="width: 50%">
+            <img src="images/before-after/before.png" alt="Før - ujævn væg klar til spartling" class="block w-full h-full object-cover" draggable="false">
+          </div>
+
+          <!-- Handle -->
+          <div id="ba-handle" class="ba-handle" style="left: 50%">
+            <div class="ba-handle-circle">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-slate-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M8 12h8m-4-4v8" />
+              </svg>
+            </div>
+          </div>
+
+          <!-- Invisible range for accessibility + easier dragging -->
+          <input type="range" id="ba-range" min="0" max="100" value="50" 
+                 class="absolute inset-0 w-full h-full opacity-0 cursor-ew-resize z-20" 
+                 aria-label="Træk for at sammenligne før og efter">
+        </div>
+
+        <div class="flex justify-between text-sm text-slate-500 mt-3 px-1">
+          <span>Før</span>
+          <span>Efter</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- YDELSER -->
+  <section id="ydelser" class="scroll-mt-24 bg-white border-t">
+    <div class="max-w-6xl mx-auto px-6 py-20 md:py-24">
+      <div class="max-w-2xl mb-12">
+        <div class="uppercase tracking-[3px] text-xs font-semibold text-emerald-800 mb-3">HVAD VI KAN HJÆLPE MED</div>
+        <h2 class="text-6xl tracking-[-2px] font-semibold">Ydelser</h2>
+        <p class="mt-4 text-xl text-slate-600">Vi løser de fleste opgaver inden for spartling og overfladebehandling – både nybyg og renovering.</p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div class="rounded-3xl border border-slate-200 bg-white p-8 hover:border-emerald-900/20 transition group">
+          <div class="text-4xl mb-6 opacity-80 group-hover:opacity-100 transition">🧱</div>
+          <h3 class="font-semibold text-2xl tracking-tight mb-3">Fuldspartling</h3>
+          <p class="text-slate-600 leading-relaxed">Glatte, plane vægge og lofter klar til maling eller tapet. Vi arbejder med både nybyg og renovering.</p>
+        </div>
+        <div class="rounded-3xl border border-slate-200 bg-white p-8 hover:border-emerald-900/20 transition group">
+          <div class="text-4xl mb-6 opacity-80 group-hover:opacity-100 transition">🧵</div>
+          <h3 class="font-semibold text-2xl tracking-tight mb-3">Opsætning af filt &amp; tapet</h3>
+          <p class="text-slate-600 leading-relaxed">Professionel filt med usynlige samlinger og præcise hjørner. Også traditionelt tapet.</p>
+        </div>
+        <div class="rounded-3xl border border-slate-200 bg-white p-8 hover:border-emerald-900/20 transition group">
+          <div class="text-4xl mb-6 opacity-80 group-hover:opacity-100 transition">🎨</div>
+          <h3 class="font-semibold text-2xl tracking-tight mb-3">Maling af vægge og lofter</h3>
+          <p class="text-slate-600 leading-relaxed">Ensartet, holdbar finish med kvalitetsmaling. Vi rådgiver gerne om farver og systemer.</p>
+        </div>
+        <div class="rounded-3xl border border-slate-200 bg-white p-8 hover:border-emerald-900/20 transition group">
+          <div class="text-4xl mb-6 opacity-80 group-hover:opacity-100 transition">🏠</div>
+          <h3 class="font-semibold text-2xl tracking-tight mb-3">Facader &amp; udendørs</h3>
+          <p class="text-slate-600 leading-relaxed">Maling og vedligehold af facader i slidstærke systemer, der holder til det danske vejr.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- KONTAKT -->
+  <section id="kontakt" class="scroll-mt-20 bg-emerald-950 text-white">
+    <div class="max-w-5xl mx-auto px-6 py-20 md:py-24">
+      <div class="grid md:grid-cols-5 gap-x-16 gap-y-14">
+        <!-- Contact info -->
+        <div class="md:col-span-2">
+          <div class="uppercase text-xs tracking-[3px] text-emerald-400 mb-5">KOM I GANG</div>
+          <h2 class="text-6xl leading-none tracking-[-2.5px] font-semibold mb-8">
+            Lad os tale<br>om din opgave.
+          </h2>
+
+          <div class="space-y-6 text-white/80 text-[15px]">
+            <div>
+              <div class="font-semibold text-white mb-1">Telefon</div>
+              <a href="tel:21631793" class="text-2xl font-medium hover:text-white transition">21 63 17 93</a>
+            </div>
+            <div>
+              <div class="font-semibold text-white mb-1">E-mail</div>
+              <a href="mailto:hojfynsspartel@gmail.com" class="hover:text-white transition">hojfynsspartel@gmail.com</a>
+            </div>
+            <div>
+              <div class="font-semibold text-white mb-1">Adresse</div>
+              <div>Vissenbjerg, Fyn</div>
+            </div>
+          </div>
+
+          <div class="mt-10 pt-8 border-t border-white/15 text-sm text-white/55 max-w-[280px]">
+            Vi dækker hele Fyn. Opgaver på Sjælland og i Jylland efter aftale.
+          </div>
+        </div>
+
+        <!-- Form -->
+        <div class="md:col-span-3">
+          <form id="contact-form" action="https://api.web3forms.com/submit" method="POST" 
+                class="bg-white/5 backdrop-blur border border-white/10 rounded-3xl p-8 md:p-10 space-y-6">
+            
+            <!-- Web3Forms access key - user needs to replace this -->
+            <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_KEY_HERE">
+            <input type="hidden" name="subject" value="Ny henvendelse fra højfynsspartel.dk">
+            <input type="hidden" name="from_name" value="Højfynsspartel Hjemmeside">
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              <div>
+                <label class="block text-xs tracking-widest font-medium text-white/60 mb-2">NAVN</label>
+                <input type="text" name="navn" required 
+                       class="form-input w-full bg-white/5 border border-white/20 text-white placeholder:text-white/40 rounded-2xl px-5 py-3.5 text-lg focus:bg-white/10" 
+                       placeholder="Anders Jensen">
+              </div>
+              <div>
+                <label class="block text-xs tracking-widest font-medium text-white/60 mb-2">TELEFON</label>
+                <input type="tel" name="telefon" required 
+                       class="form-input w-full bg-white/5 border border-white/20 text-white placeholder:text-white/40 rounded-2xl px-5 py-3.5 text-lg focus:bg-white/10" 
+                       placeholder="20 12 34 56">
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-xs tracking-widest font-medium text-white/60 mb-2">E-MAIL</label>
+              <input type="email" name="email" required 
+                     class="form-input w-full bg-white/5 border border-white/20 text-white placeholder:text-white/40 rounded-2xl px-5 py-3.5 text-lg focus:bg-white/10" 
+                     placeholder="din@email.dk">
+            </div>
+
+            <div>
+              <label class="block text-xs tracking-widest font-medium text-white/60 mb-2">BESKRIV DIN OPGAVE</label>
+              <textarea name="beskrivelse" rows="5" required 
+                        class="form-input w-full bg-white/5 border border-white/20 text-white placeholder:text-white/40 rounded-3xl px-5 py-4 text-lg resize-y min-h-[120px] focus:bg-white/10" 
+                        placeholder="F.eks. fuldspartling af stue og køkken, ca. 85 m². Gerne færdig inden 1. oktober."></textarea>
+            </div>
+
+            <!-- Honeypot -->
+            <input type="checkbox" name="botcheck" class="hidden" style="display:none">
+
+            <button type="submit"
+                    class="btn-primary w-full mt-2 h-14 rounded-2xl bg-emerald-600 hover:bg-emerald-500 active:bg-emerald-700 text-lg font-semibold tracking-[-0.2px] transition">
+              Send besked — vi vender tilbage hurtigt
+            </button>
+
+            <p class="text-center text-xs text-white/50 pt-1">Vi svarer typisk inden for 24 timer på hverdage.</p>
+          </form>
+
+          <!-- Success message -->
+          <div id="success-message" class="hidden mt-8 p-8 bg-emerald-900/60 border border-emerald-500/30 rounded-3xl text-center">
+            <div class="text-4xl mb-4">✓</div>
+            <div class="text-xl font-semibold mb-2">Tak for din besked!</div>
+            <p class="text-emerald-200/80">Jeg vender tilbage inden for 24 timer på hverdage.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-slate-900 text-slate-400 text-sm">
+    <div class="max-w-7xl mx-auto px-6 py-14">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-y-8">
+        <div class="flex items-center gap-4">
+          <div class="h-8 w-8 rounded-xl bg-emerald-800 flex items-center justify-center text-white text-sm font-bold tracking-tighter">H</div>
+          <div>
+            <div class="font-semibold text-white">Højfynsspartel</div>
+            <div class="text-xs">v/ Michael Iversen</div>
+          </div>
+        </div>
+
+        <div class="flex flex-wrap gap-x-8 gap-y-2">
+          <a href="tel:21631793" class="hover:text-white transition">21 63 17 93</a>
+          <a href="mailto:hojfynsspartel@gmail.com" class="hover:text-white transition">hojfynsspartel@gmail.com</a>
+          <span>Vissenbjerg, Fyn</span>
+        </div>
+
+        <div class="text-xs text-slate-500">
+          © <span id="year"></span> Højfynsspartel · CVR 41620730
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating mobile CTA -->
+  <a href="#kontakt" 
+     class="md:hidden fixed bottom-6 right-6 z-40 fab inline-flex items-center justify-center bg-emerald-900 text-white px-6 h-12 rounded-2xl text-sm font-semibold shadow-xl active:scale-[0.975]">
+    Få et tilbud
+  </a>
+
+  <!-- Lightbox Modal -->
+  <div id="lightbox" class="hidden fixed inset-0 z-[100] bg-black/90 flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-label="Billedfremviser">
+    <div class="relative max-w-6xl w-full">
+      <!-- Close -->
+      <button id="lightbox-close" 
+              class="absolute -top-2 -right-2 md:top-2 md:right-2 z-10 h-11 w-11 flex items-center justify-center rounded-full bg-white/90 text-slate-900 text-2xl leading-none hover:bg-white transition" 
+              aria-label="Luk billedfremviser">×</button>
+
+      <div class="relative">
+        <img id="lightbox-image" src="" alt="" class="max-h-[88vh] w-auto max-w-full mx-auto rounded-2xl shadow-2xl object-contain">
+
+        <div id="lightbox-caption" 
+             class="mt-4 text-center text-white/80 text-sm max-w-2xl mx-auto px-4"></div>
+      </div>
+
+      <!-- Navigation -->
+      <button id="lightbox-prev" 
+              class="absolute left-2 md:-left-4 top-1/2 -translate-y-1/2 h-11 w-11 flex items-center justify-center rounded-full bg-white/90 text-slate-900 text-3xl hover:bg-white transition" 
+              aria-label="Forrige billede">‹</button>
+      <button id="lightbox-next" 
+              class="absolute right-2 md:-right-4 top-1/2 -translate-y-1/2 h-11 w-11 flex items-center justify-center rounded-full bg-white/90 text-slate-900 text-3xl hover:bg-white transition" 
+              aria-label="Næste billede">›</button>
+    </div>
+  </div>
+
+  <script>
+    // ============================================
+    // HØJFYNS SPARTEL - Premium Static Website
+    // All vanilla JS - GitHub Pages ready
+    // ============================================
+
+    // Portfolio data (easily editable)
+    const projects = [
+      {
+        image: "images/projects/villa-odense.jpg",
+        title: "Fuldspartlet villa",
+        location: "Odense",
+        description: "Komplet fuldspartling af vægge og lofter i stor villa. Perfekt finish klar til maling i høj kvalitet.",
+        details: "420 m² • 3 uger",
+        category: "Fuldspartling"
+      },
+      {
+        image: "images/projects/stue-filt-vissenbjerg.jpg",
+        title: "Moderne stue med filt",
+        location: "Vissenbjerg",
+        description: "Elegant filt på vægge med skarpe hjørner og usynlige samlinger. Skabte et roligt og lyst udtryk.",
+        details: "85 m² • Privat bolig",
+        category: "Filt & Tapet"
+      },
+      {
+        image: "images/projects/kokken-svendborg.jpg",
+        title: "Køkkenrenovering",
+        location: "Svendborg",
+        description: "Glatte vægge og lofter i forbindelse med køkkenrenovering. Professionel forberedelse til malerarbejde.",
+        details: "62 m² • 10 dage",
+        category: "Fuldspartling"
+      },
+      {
+        image: "images/projects/facade-kerteminde.jpg",
+        title: "Facademaling af parcelhus",
+        location: "Kerteminde",
+        description: "Holdbar facademaling på pudset murværk. Grundig forberedelse og slidstærkt system til dansk klima.",
+        details: "240 m² facade",
+        category: "Facader"
+      },
+      {
+        image: "images/projects/loft-assens.jpg",
+        title: "Loft i ældre ejendom",
+        location: "Assens",
+        description: "Omfattende spartling af ujævne lofter i 1920er-ejendom. Resultatet blev helt plant og smukt.",
+        details: "110 m² • Historisk bygning",
+        category: "Fuldspartling"
+      },
+      {
+        image: "images/before-after/after.jpg",
+        title: "Børneværelse & soveværelse",
+        location: "Fåborg",
+        description: "Fuldspartling og maling af to værelser. Bløde farver og perfekt overflade til den lille familie.",
+        details: "48 m² • Privat",
+        category: "Maling"
+      }
+    ];
+
+    let currentFilter = 'all';
+    let currentLightboxIndex = 0;
+    let filteredProjects = [...projects];
+
+    // Initialize everything
+    function init() {
+      initYear();
+      initPortfolio();
+      initFilters();
+      initLightbox();
+      initBeforeAfter();
+      initContactForm();
+      initMobileMenu();
+      initScrollSpy();
+      initFadeAnimations();
+    }
+
+    function initYear() {
+      const yearEl = document.getElementById('year');
+      if (yearEl) yearEl.textContent = new Date().getFullYear();
+    }
+
+    // Render portfolio grid
+    function renderPortfolio(projectsToShow) {
+      const grid = document.getElementById('portfolio-grid');
+      if (!grid) return;
+
+      grid.innerHTML = projectsToShow.map((p, index) => `
+        <article class="project-card group bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-sm cursor-pointer"
+                 data-index="${index}">
+          <div class="relative aspect-[16/10] overflow-hidden bg-slate-100">
+            <img src="${p.image}" 
+                 alt="${p.title} – ${p.location}"
+                 class="absolute inset-0 w-full h-full object-cover"
+                 loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-b from-black/10 via-black/5 to-black/40"></div>
+            
+            <div class="absolute top-5 left-5">
+              <span class="inline-block px-4 py-1 rounded-2xl bg-white/90 backdrop-blur text-xs font-semibold tracking-wider text-emerald-900">
+                ${p.category}
+              </span>
+            </div>
+          </div>
+
+          <div class="p-7">
+            <div class="flex items-baseline justify-between gap-3">
+              <h3 class="text-2xl font-semibold tracking-tight text-slate-900">${p.title}</h3>
+              ${p.location ? `<span class="text-sm text-slate-500 whitespace-nowrap">${p.location}</span>` : ''}
+            </div>
+            <p class="mt-3 text-[15px] leading-relaxed text-slate-600 line-clamp-3">${p.description}</p>
+            ${p.details ? `<p class="mt-3 text-sm text-slate-500">${p.details}</p>` : ''}
+          </div>
+        </article>
+      `).join('');
+
+      // Add click handlers for lightbox
+      grid.querySelectorAll('.project-card').forEach(card => {
+        card.addEventListener('click', () => {
+          const idx = parseInt(card.dataset.index, 10);
+          openLightbox(idx);
+        });
+      });
+    }
+
+    function initPortfolio() {
+      filteredProjects = [...projects];
+      renderPortfolio(filteredProjects);
+    }
+
+    function initFilters() {
+      const filterContainer = document.getElementById('filters');
+      if (!filterContainer) return;
+
+      const buttons = filterContainer.querySelectorAll('.filter-btn');
+
+      buttons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          // Update active state
+          buttons.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+
+          const filter = btn.dataset.filter;
+          currentFilter = filter;
+
+          if (filter === 'all') {
+            filteredProjects = [...projects];
+          } else {
+            filteredProjects = projects.filter(p => p.category === filter);
+          }
+
+          renderPortfolio(filteredProjects);
+        });
+      });
+    }
+
+    // Lightbox
+    function initLightbox() {
+      const lightbox = document.getElementById('lightbox');
+      const closeBtn = document.getElementById('lightbox-close');
+      const prevBtn = document.getElementById('lightbox-prev');
+      const nextBtn = document.getElementById('lightbox-next');
+      const img = document.getElementById('lightbox-image');
+
+      if (!lightbox || !closeBtn) return;
+
+      function closeLightbox() {
+        lightbox.classList.add('hidden');
+        document.body.style.overflow = '';
+      }
+
+      closeBtn.addEventListener('click', closeLightbox);
+
+      lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox) closeLightbox();
+      });
+
+      prevBtn.addEventListener('click', () => {
+        currentLightboxIndex = (currentLightboxIndex - 1 + filteredProjects.length) % filteredProjects.length;
+        showLightboxImage();
+      });
+
+      nextBtn.addEventListener('click', () => {
+        currentLightboxIndex = (currentLightboxIndex + 1) % filteredProjects.length;
+        showLightboxImage();
+      });
+
+      // Keyboard navigation
+      document.addEventListener('keydown', (e) => {
+        if (lightbox.classList.contains('hidden')) return;
+
+        if (e.key === 'Escape') closeLightbox();
+        if (e.key === 'ArrowLeft') {
+          currentLightboxIndex = (currentLightboxIndex - 1 + filteredProjects.length) % filteredProjects.length;
+          showLightboxImage();
+        }
+        if (e.key === 'ArrowRight') {
+          currentLightboxIndex = (currentLightboxIndex + 1) % filteredProjects.length;
+          showLightboxImage();
+        }
+      });
+
+      // Touch swipe support
+      let touchStartX = 0;
+      lightbox.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+      }, { passive: true });
+
+      lightbox.addEventListener('touchend', (e) => {
+        const touchEndX = e.changedTouches[0].screenX;
+        const diff = touchStartX - touchEndX;
+
+        if (Math.abs(diff) > 50) {
+          if (diff > 0) {
+            currentLightboxIndex = (currentLightboxIndex + 1) % filteredProjects.length;
+          } else {
+            currentLightboxIndex = (currentLightboxIndex - 1 + filteredProjects.length) % filteredProjects.length;
+          }
+          showLightboxImage();
+        }
+      }, { passive: true });
+    }
+
+    function openLightbox(index) {
+      const lightbox = document.getElementById('lightbox');
+      if (!lightbox) return;
+
+      currentLightboxIndex = index;
+      showLightboxImage();
+      lightbox.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function showLightboxImage() {
+      const img = document.getElementById('lightbox-image');
+      const caption = document.getElementById('lightbox-caption');
+      const project = filteredProjects[currentLightboxIndex];
+
+      if (!img || !caption || !project) return;
+
+      img.src = project.image;
+      img.alt = project.title;
+      caption.innerHTML = `
+        <span class="font-semibold text-white">${project.title}</span> 
+        <span class="text-white/50">• ${project.location}</span><br>
+        <span class="text-white/70">${project.description}</span>
+      `;
+    }
+
+    // Before/After Slider - fully accessible + touch friendly
+    function initBeforeAfter() {
+      const container = document.getElementById('ba-slider');
+      const before = document.getElementById('ba-before');
+      const handle = document.getElementById('ba-handle');
+      const range = document.getElementById('ba-range');
+
+      if (!container || !before || !handle || !range) return;
+
+      let isDragging = false;
+
+      function updatePosition(percent) {
+        percent = Math.max(0, Math.min(100, percent));
+        before.style.width = `${percent}%`;
+        handle.style.left = `${percent}%`;
+        range.value = percent;
+      }
+
+      // Mouse + touch drag on container
+      function startDrag(e) {
+        isDragging = true;
+        updateFromEvent(e);
+      }
+
+      function updateFromEvent(e) {
+        if (!isDragging) return;
+        const rect = container.getBoundingClientRect();
+        const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+        const percent = ((clientX - rect.left) / rect.width) * 100;
+        updatePosition(percent);
+      }
+
+      function endDrag() {
+        isDragging = false;
+      }
+
+      container.addEventListener('mousedown', startDrag);
+      container.addEventListener('mousemove', updateFromEvent);
+      window.addEventListener('mouseup', endDrag);
+
+      // Touch support
+      container.addEventListener('touchstart', startDrag, { passive: true });
+      container.addEventListener('touchmove', updateFromEvent, { passive: true });
+      window.addEventListener('touchend', endDrag);
+
+      // Range input (great for accessibility)
+      range.addEventListener('input', (e) => {
+        updatePosition(parseFloat(e.target.value));
+      });
+
+      // Click anywhere on image to set position
+      container.addEventListener('click', (e) => {
+        if (e.target === range) return; // don't interfere with range
+        const rect = container.getBoundingClientRect();
+        const percent = ((e.clientX - rect.left) / rect.width) * 100;
+        updatePosition(percent);
+      });
+
+      // Keyboard support for range
+      range.addEventListener('keydown', (e) => {
+        let val = parseFloat(range.value);
+        if (e.key === 'ArrowLeft') val -= 5;
+        if (e.key === 'ArrowRight') val += 5;
+        updatePosition(val);
+      });
+    }
+
+    // Contact form with Web3Forms
+    function initContactForm() {
+      const form = document.getElementById('contact-form');
+      const success = document.getElementById('success-message');
+
+      if (!form || !success) return;
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const button = form.querySelector('button[type="submit"]');
+        const originalText = button.textContent;
+
+        button.disabled = true;
+        button.textContent = 'Sender...';
+
+        try {
+          const response = await fetch(form.action, {
+            method: 'POST',
+            body: new FormData(form)
+          });
+
+          if (response.ok) {
+            form.style.display = 'none';
+            success.classList.remove('hidden');
+            success.classList.add('flex', 'flex-col', 'items-center');
+            form.reset();
+          } else {
+            throw new Error('Submission failed');
+          }
+        } catch (err) {
+          // Fallback: open email client with prefilled content
+          const formData = new FormData(form);
+          const subject = encodeURIComponent('Forespørgsel fra hjemmesiden');
+          const body = encodeURIComponent(
+            `Navn: ${formData.get('navn')}\n` +
+            `Telefon: ${formData.get('telefon')}\n` +
+            `Email: ${formData.get('email')}\n\n` +
+            `Beskrivelse:\n${formData.get('beskrivelse')}`
+          );
+          window.location.href = `mailto:hojfynsspartel@gmail.com?subject=${subject}&body=${body}`;
+          
+          // Reset button
+          button.disabled = false;
+          button.textContent = originalText;
+          alert('Der opstod et teknisk problem. Din mailklient åbnes i stedet.');
+        }
+      });
+    }
+
+    // Mobile menu
+    function initMobileMenu() {
+      const btn = document.getElementById('mobile-menu-btn');
+      const menu = document.getElementById('mobile-menu');
+      const menuIcon = document.getElementById('menu-icon');
+      const closeIcon = document.getElementById('close-icon');
+
+      if (!btn || !menu) return;
+
+      function toggleMenu() {
+        const isOpen = !menu.classList.contains('hidden');
+        
+        if (isOpen) {
+          menu.classList.add('hidden');
+          menuIcon?.classList.remove('hidden');
+          closeIcon?.classList.add('hidden');
+          btn.setAttribute('aria-expanded', 'false');
+        } else {
+          menu.classList.remove('hidden');
+          menuIcon?.classList.add('hidden');
+          closeIcon?.classList.remove('hidden');
+          btn.setAttribute('aria-expanded', 'true');
+        }
+      }
+
+      btn.addEventListener('click', toggleMenu);
+
+      // Close on link click
+      document.querySelectorAll('.mobile-link').forEach(link => {
+        link.addEventListener('click', () => {
+          menu.classList.add('hidden');
+          menuIcon?.classList.remove('hidden');
+          closeIcon?.classList.add('hidden');
+          btn.setAttribute('aria-expanded', 'false');
+        });
+      });
+
+      // Close on escape
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && !menu.classList.contains('hidden')) {
+          menu.classList.add('hidden');
+          menuIcon?.classList.remove('hidden');
+          closeIcon?.classList.add('hidden');
+          btn.setAttribute('aria-expanded', 'false');
+        }
+      });
+    }
+
+    // Scrollspy for active nav links
+    function initScrollSpy() {
+      const navLinks = document.querySelectorAll('.nav-link');
+      const sections = ['om-os', 'projekter', 'proces', 'ydelser', 'kontakt'].map(id => document.getElementById(id));
+
+      function updateActive() {
+        let current = '';
+        const scrollY = window.scrollY + 140;
+
+        sections.forEach(section => {
+          if (section && section.offsetTop <= scrollY) {
+            current = section.getAttribute('id');
+          }
+        });
+
+        navLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === `#${current}`) {
+            link.classList.add('active');
+          }
+        });
+      }
+
+      window.addEventListener('scroll', updateActive, { passive: true });
+      window.addEventListener('load', updateActive);
+    }
+
+    // Fade-up animations on scroll
+    function initFadeAnimations() {
+      const elements = document.querySelectorAll('.fade-up');
+      if (!elements.length) return;
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+      elements.forEach(el => observer.observe(el));
+    }
+
+    // Boot the app
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
+
+    // Make projects available for debugging if needed
+    window.HOJFYNSPARTEL_PROJECTS = projects;
+  </script>
+</body>
+</html>
